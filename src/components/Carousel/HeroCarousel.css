@@ -1,0 +1,153 @@
+.hero-carousel {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+}
+
+.slides-track {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+}
+
+.slide-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 2rem;
+  padding-top: calc(90px + 2rem); /* Account for header height */
+}
+
+.slide-content h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: bold;
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.slide-content p {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  max-width: min(800px, 90%);
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  width: clamp(40px, 5vw, 50px);
+  height: clamp(40px, 5vw, 50px);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  transition: all 0.3s ease;
+  z-index: 3;
+}
+
+.carousel-control:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.carousel-control:not(:disabled):hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-control.prev {
+  left: clamp(10px, 2vw, 20px);
+}
+
+.carousel-control.next {
+  right: clamp(10px, 2vw, 20px);
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: clamp(1rem, 4vh, 2rem);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: clamp(0.5rem, 1vw, 1rem);
+  z-index: 3;
+}
+
+.indicator {
+  width: clamp(8px, 1vw, 12px);
+  height: clamp(8px, 1vw, 12px);
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 2px solid white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.indicator:disabled {
+  cursor: not-allowed;
+}
+
+.indicator.active {
+  background-color: white;
+  transform: scale(1.2);
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .hero-carousel {
+    height: 100vh;
+  }
+
+  .slide-content {
+    padding: 1rem;
+    padding-top: calc(90px + 1rem);
+  }
+}
+
+/* Handle mobile browsers' address bar */
+@media (max-width: 768px) and (max-height: 600px) {
+  .hero-carousel {
+    height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+}

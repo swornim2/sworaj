@@ -1,0 +1,19 @@
+.main-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.main-content {
+  flex: 1;
+  margin-top: 90px; /* Height of the fixed header */
+  padding: 0;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 0;
+  }
+}
